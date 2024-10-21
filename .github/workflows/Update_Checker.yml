@@ -183,5 +183,5 @@ jobs:
       if: steps.cacheHash.outputs.cache-hit != 'true'
       uses: Jason6111/repository-dispatch@v5
       with:
-        token: ${{ secrets. ACTIONS_TRIGGER_BETA }}
+        token: ${{ secrets.ACTIONS_TRIGGER_BETA }}
         event-type: OpenWrt相关代码更新 #OpenWrt Related Code Updates
