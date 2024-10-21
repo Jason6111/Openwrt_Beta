@@ -155,7 +155,7 @@ jobs:
       uses: stefanzweifel/git-auto-commit-action@v5.0.0
       id: commit
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.ACTIONS_TRIGGER_OPENWRT_BETA }}
       with:
         commit_message: 自动更新config
         branch: main
@@ -277,7 +277,7 @@ jobs:
       uses: Jason6111/action-gh-release@v1.1
       if: steps.tag.outputs.status == 'success' && !cancelled()
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.ACTIONS_TRIGGER_OPENWRT_BETA }}
       with:
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
@@ -296,7 +296,7 @@ jobs:
         keep_latest: 5
         delete_tags: true
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.ACTIONS_TRIGGER_OPENWRT_BETA }}
         
     - name: TG信息通知
       if: ${{ success() }}
