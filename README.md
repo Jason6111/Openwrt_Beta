@@ -1,10 +1,10 @@
-[![LICENSE](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square&label=LICENSE)](https://github.com/Jason6111/openwrt23_beta/blob/main/LICENSE)
-[![Releases](https://img.shields.io/badge/support-X86-blue?style=flat&logo=rss)](https://github.com/Jason6111/openwrt23_beta/releases)
+[![LICENSE](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square&label=LICENSE)](https://github.com/Jason6111/Openwrt_Beta/blob/main/LICENSE)
+[![Releases](https://img.shields.io/badge/support-X86-blue?style=flat&logo=rss)](https://github.com/Jason6111/Openwrt_Beta/releases)
 [![Lean](https://img.shields.io/badge/SourceCode-Lean-green?style=flat&logo=GitHub)](https://github.com/coolsnowwolf/lede)
-[![UpdateCheck](https://img.shields.io/badge/Automatic-UpdateCheck-blueviolet?style=flat&logo=apacheflink)](https://github.com/Jason6111/openwrt23_beta/actions)
-[![Actions](https://img.shields.io/badge/GithubAction-Actions-important?style=flat&logo=GitHubActions)](https://github.com/Jason6111/openwrt23_beta/actions)
-[![Update_Checker](https://github.com/Jason6111/openwrt23_beta/actions/workflows/Update_Checker.yml/badge.svg)](https://github.com/Jason6111/openwrt23_beta/tags)
-[![download](https://img.shields.io/github/downloads/Jason6111/openwrt23_beta/total)](https://github.com/Jason6111/openwrt23_beta/releases)
+[![UpdateCheck](https://img.shields.io/badge/Automatic-UpdateCheck-blueviolet?style=flat&logo=apacheflink)](https://github.com/Jason6111/Openwrt_Beta/actions)
+[![Actions](https://img.shields.io/badge/GithubAction-Actions-important?style=flat&logo=GitHubActions)](https://github.com/Jason6111/Openwrt_Beta/actions)
+[![Update_Checker](https://github.com/Jason6111/Openwrt_Beta/actions/workflows/Update_Checker.yml/badge.svg)](https://github.com/Jason6111/Openwrt_Beta/tags)
+[![download](https://img.shields.io/github/downloads/Jason6111/Openwrt_Beta/total)](https://github.com/Jason6111/Openwrt_Beta/releases)
 [![TG](https://img.shields.io/badge/Contact-telegram-blue)](https://t.me/jason61)  
 
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Jason6111&bg_color=30,e96443,904e95&title_color=fff&text_color=fff)
@@ -24,8 +24,8 @@
 ![image](other/function.png)
   
 ### 下载
-- [Releases](https://github.com/Jason6111/openwrt23_beta/releases)
-- [Tags](https://github.com/Jason6111/openwrt23_beta/tags)  
+- [Releases](https://github.com/Jason6111/Openwrt_Beta/releases)
+- [Tags](https://github.com/Jason6111/Openwrt_Beta/tags)  
 
 ### 打赏 
 如果你觉得此项目对你有帮助，可以捐助，以鼓励项目能持续发展，更加完善  
