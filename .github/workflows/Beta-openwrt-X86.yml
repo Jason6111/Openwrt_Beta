@@ -151,15 +151,15 @@ jobs:
           cp -f openwrt/.config config/$i.config
         done
         
-#    - name: 自动更新config #Git auto update config
-#      uses: stefanzweifel/git-auto-commit-action@v5.0.0
-#      id: commit
-#      env:
-#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#      with:
-#        commit_message: 自动更新config
-#        branch: main
-#        commit_author: Jason6111
+    - name: 自动更新config #Git auto update config
+      uses: stefanzweifel/git-auto-commit-action@v5.0.0
+      id: commit
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        commit_message: 自动更新config
+        branch: main
+        commit_author: Jason6111
         
 #    - name: SSH connection to Actions
 #      uses: P3TERX/ssh2actions@v1.0.0
