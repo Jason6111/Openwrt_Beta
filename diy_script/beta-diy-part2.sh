@@ -49,7 +49,3 @@ git clone https://github.com/Jason6111/luci-app-netdata ./feeds/luci/application
 
 # 开启netdata温控监测
 sed -i 's/charts\.d = no/charts\.d = yes/g' ./feeds/luci/applications/luci-app-netdata/root/etc/netdata/netdata.conf
-
-#ddns
-sed -i 's/PKG_VERSION:=2\.7\.8/PKG_VERSION:=2.8.2/g' ./feeds/packages/net/ddns-scripts/Makefile
-sed -i 's/PKG_RELEASE:=5/PKG_RELEASE:=r49/g' ./feeds/packages/net/ddns-scripts/Makefile
