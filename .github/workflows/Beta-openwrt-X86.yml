@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Openwrt-Beta-X86
+name: Openwrt-23.05-X86
 
 on:
   repository_dispatch:
@@ -30,7 +30,7 @@ env:
   DIY_P1_SH: diy_script/beta-diy-part1.sh
   DIY_P2_SH: diy_script/beta-diy-part2.sh
   COMMIT_LOG_NUM: 1
-  RELEASE_TAG: Beta-X86
+  RELEASE_TAG: 23.05-X86
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
@@ -304,12 +304,12 @@ jobs:
     - name: TG信息通知
       if: ${{ success() }}
       run: |
-        curl -k --data chat_id=${{ secrets.TGID }} --data "text=我亲爱的主人您要编译的$RELEASE_TAG-$KERNEL_VERSION-$(date +"%Y.%m.%d-%H%M")固件编译成功！https://github.com/Jason6111/Openwrt_Beta/releases/tag/${{ steps.tag.outputs.release_tag }} " "https://api.telegram.org/bot${{ secrets.TG_TOKEN }}/sendMessage"
+        curl -k --data chat_id=${{ secrets.TGID }} --data "text=我亲爱的主人您要编译的$RELEASE_TAG-$KERNEL_VERSION-$(date +"%Y.%m.%d-%H%M")固件编译成功！https://github.com/Jason6111/Openwrt_/releases/tag/${{ steps.tag.outputs.release_tag }} " "https://api.telegram.org/bot${{ secrets.TG_TOKEN }}/sendMessage"
     
     - name: PushDeer信息通知
       if: ${{ success() }}
       run: |
-       curl -k --data pushkey="${{ secrets.pushkey }}" --data "text=我亲爱的主人您要编译的$RELEASE_TAG-$KERNEL_VERSION-$(date +"%Y.%m.%d-%H%M")固件编译成功！" --data "desp=https://github.com/Jason6111/Openwrt_Beta/releases/tag/${{ steps.tag.outputs.release_tag }}" --data type=markdown "https://"${{ secrets.pushserve }}"/message/push?"
+       curl -k --data pushkey="${{ secrets.pushkey }}" --data "text=我亲爱的主人您要编译的$RELEASE_TAG-$KERNEL_VERSION-$(date +"%Y.%m.%d-%H%M")固件编译成功！" --data "desp=https://github.com/Jason6111/Openwrt_/releases/tag/${{ steps.tag.outputs.release_tag }}" --data type=markdown "https://"${{ secrets.pushserve }}"/message/push?"
     
     #- name: PUSHPLUS信息通知
     #  if: ${{ success() }}
