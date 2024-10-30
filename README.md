@@ -13,11 +13,12 @@
 - HDMI静默开机回车进入BusyBox指令
 - [脚本新增TG跟Wechat推送说明](other/bot.md)
 - 借助 GitHub Actions 的 OpenWrt 在线集成自动编译.
+- 使用的23.05版本
 - 新增X86内核6.6
-- 新增ipv6以及v6转发
 1. 登录地址：`192.168.31.66`
 2. 登录帐号：`root`
-3. 登录密码：`无`  
+3. 登录密码：`无`
+4. 无用的代码：`/etc/init.d/cgroupfs-mount disable`  
 ## 默认主题背景可以在Argon主题设置中删除或修改
 ![image](other/ZT.jpg) 
 ![image](other/JM.jpg)
