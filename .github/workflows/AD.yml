@@ -1,0 +1,31 @@
+name: Modify File and Push Changes
+
+on:
+  push:
+    branches:
+      - main  # 当代码推送到 main 分支时触发工作流
+
+jobs:
+  modify-file:
+    runs-on: ubuntu-latest  # 使用 Ubuntu 环境运行工作流
+    
+    steps:
+    # 步骤 1: 检出仓库中的代码
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # 步骤 2: 在第 5 行插入规则
+    - name: Modify anti-ad-for-dnsmasq.conf
+      run: |
+        sed -i '5i @@address=/uu.cc/' anti-ad-for-dnsmasq.conf
+
+    # 步骤 3: 提交修改并推送到 GitHub 仓库
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@users.noreply.github.com"
+        git add anti-ad-for-dnsmasq.conf
+        git commit -m "Add address rule for uu.cc"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 自动生成的 token，用于认证并推送更改
