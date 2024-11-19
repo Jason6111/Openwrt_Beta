@@ -14,40 +14,59 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # 步骤 2: 下载远程文件 anti-ad-for-dnsmasq.conf 到仓库根目录
+    # 步骤 2: 输出当前目录，以便调试
+    - name: Debug current directory
+      run: |
+        echo "Current directory:"
+        pwd
+        echo "List files in the current directory:"
+        ls -alh
+
+    # 步骤 3: 下载远程文件 anti-ad-for-dnsmasq.conf 到仓库根目录
     - name: Download anti-ad-for-dnsmasq.conf from external URL
       run: |
-        curl -o anti-ad-for-dnsmasq.conf https://anti-ad.net/anti-ad-for-dnsmasq.conf
+        echo "Downloading anti-ad-for-dnsmasq.conf..."
+        curl -o ./anti-ad-for-dnsmasq.conf https://anti-ad.net/anti-ad-for-dnsmasq.conf
 
-    # 步骤 3: 删除所有包含 "uu.cc" 的行
+    # 步骤 4: 输出文件下载后的状态
+    - name: Check if file exists after download
+      run: |
+        if [ -f "./anti-ad-for-dnsmasq.conf" ]; then
+          echo "File downloaded successfully!"
+        else
+          echo "File not found after download."
+          exit 1
+        fi
+
+    # 步骤 5: 删除所有包含 "uu.cc" 的行
     - name: Delete lines containing uu.cc
       run: |
         # 确保文件已成功下载
-        if [ -f "anti-ad-for-dnsmasq.conf" ]; then
+        if [ -f "./anti-ad-for-dnsmasq.conf" ]; then
           # 删除所有包含 uu.cc 的行
-          sed -i '/uu.cc/d' anti-ad-for-dnsmasq.conf
+          sed -i '/uu.cc/d' ./anti-ad-for-dnsmasq.conf
         else
           echo "File not found: anti-ad-for-dnsmasq.conf"
           exit 1
         fi
 
-    # 步骤 4: 在第5行插入规则
+    # 步骤 6: 在第5行插入规则
     - name: Insert rule at line 5
       run: |
-        if [ -f "anti-ad-for-dnsmasq.conf" ]; then
+        if [ -f "./anti-ad-for-dnsmasq.conf" ]; then
           # 在文件的第5行插入规则
-          sed -i '5i @@address=/uu.cc/' anti-ad-for-dnsmasq.conf
+          sed -i '5i @@address=/uu.cc/' ./anti-ad-for-dnsmasq.conf
         else
           echo "File not found: anti-ad-for-dnsmasq.conf"
           exit 1
         fi
 
-    # 步骤 5: 提交修改并推送到 GitHub 仓库
+    # 步骤 7: 提交修改并推送到 GitHub 仓库
     - name: Commit and push changes
       run: |
         git config --global user.name "github-actions"
         git config --global user.email "github-actions@users.noreply.github.com"
-        git add anti-ad-for-dnsmasq.conf
+        git add ./anti-ad-for-dnsmasq.conf
         # 判断是否有更改，如果有则提交
         if git diff --quiet; then
           echo "No changes to commit"
