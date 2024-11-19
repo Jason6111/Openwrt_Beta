@@ -14,7 +14,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # 步骤 2: 下载远程文件 anti-ad-for-dnsmasq.conf
+    # 步骤 2: 下载远程文件 anti-ad-for-dnsmasq.conf 到仓库根目录
     - name: Download anti-ad-for-dnsmasq.conf from external URL
       run: |
         curl -o anti-ad-for-dnsmasq.conf https://anti-ad.net/anti-ad-for-dnsmasq.conf
