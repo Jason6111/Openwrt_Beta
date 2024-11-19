@@ -1,0 +1,59 @@
+name: Update
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 */3 * * *
+
+env:
+  TZ: Asia/Shanghai
+
+jobs:
+  Update:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: GetTime
+      id: date
+      run: echo "date=$(date +'%Y-%m-%d %H:%M:%S CST')" >> $GITHUB_OUTPUT
+
+    - name: Update
+      run: |
+        # 删除旧的配置文件
+        rm -f ./anti-ad-for-dnsmasq.conf
+        
+        # 下载最新的配置文件
+        wget https://anti-ad.net/anti-ad-for-dnsmasq.conf -O ./anti-ad-for-dnsmasq.conf
+        
+        # 删除包含 uu.cc 的行
+        sed -i '/uu.cc/d' ./anti-ad-for-dnsmasq.conf
+        
+        # 在文件第 5 行插入新的条目
+        sed -i '5i @@address=/uu.cc/' ./anti-ad-for-dnsmasq.conf
+
+    - name: Clean
+      run: |
+        # 配置 Git 用户信息
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        
+        # 创建一个新的空分支
+        git checkout --orphan latest_branch
+        
+        # 将所有更改添加到 Git
+        git add -A
+        
+        # 提交更改，提交信息为当前日期时间
+        git commit -am "${{ steps.date.outputs.date }}"
+        
+        # 删除旧的 main 分支并重命名当前分支为 main
+        git branch -D main
+        git branch -m main
+
+    - name: Push
+      run: |
+        # 强制推送到远程仓库
+        git push -f origin main
